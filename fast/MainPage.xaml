@@ -7,27 +7,35 @@
 
         <HorizontalStackLayout x:Name="layerUm">
 
-            <Image Source="um.png"
+            <Image Source="fundo00.png"
                    Aspect="AspectFill"/>
-            <Image Source="um.png"
+            <Image Source="fundo00.png"
                    Aspect="AspectFill"/>
-            <Image Source="um.png"
+            <Image Source="fundo00.png"
                    Aspect="AspectFill"/>
 
         </HorizontalStackLayout>
 
         <HorizontalStackLayout x:Name="layerDois">
-            <Image Source="doi.png"/>
-            <Image Source="doi.png"/>
-            <Image Source="doi.png"/>
+            <Image Source="fundo01.png"/>
+            <Image Source="fundo01.png"/>
+            <Image Source="fundo01.png"/>
 
         </HorizontalStackLayout>
 
         <HorizontalStackLayout x:Name="layerTres">
 
-            <Image Source="tres.png"/>
-            <Image Source="tres.png"/>
-            <Image Source="tres.png"/>
+            <Image Source="fundo02.png"/>
+            <Image Source="fundo02.png"/>
+            <Image Source="fundo02.png"/>
+
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout x:Name="layerQuatro">
+
+            <Image Source="fundo03.png"/>
+            <Image Source="fundo03.png"/>
+            <Image Source="fundo03.png"/>
 
         </HorizontalStackLayout>
 
