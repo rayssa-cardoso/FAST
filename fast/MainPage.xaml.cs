@@ -2,102 +2,118 @@
 
 public partial class MainPage : ContentPage
 {
-	bool estaMorto = false;
-	bool estaPulando = false;
+	double HeightWindow = 0;
+	double WidthtWindow = 0;
+ 	int Velocity = 0;
+	 int Velocity1 = 0;
+	 int Velocity2 = 0;
+	 int Velocity3 = 0;
+	 int Velocity4 = 0;
+	 int Gravity = 5;
 
-	const int tempoEntreFrames = 25;
 
-	int velocidade = 0;
-	int velocidade1 = 0;
-	int velocidade2 = 0;
-	int velocidade3 = 0;
-	int velocidade4 = 0;
-	int larguraJanela = 0;
-	int alturaJanela = 0;
+	 int TimeBeteweenFrames = 25;
+
+	bool IsDied = true;
+	 int JumpForce = 35;
+	 int maxJumpTime = 5;
+	bool IsJumping = false;
+	int JumpTime = 0;
+	 int minOpening = 100;
+	int Score = 0;
+
+
+
+	Player player;
 
 	public MainPage()
 	{
 		InitializeComponent();
+		player = new Player(imgpersonagem);
+		player.Run();
 	}
+
+	async Task Desenha()
+	{
+		while (!IsDied)
+		{
+			GerenciaCenarios();
+			player.Desenha();
+			await Task.Delay(TimeBeteweenFrames);
+		}
+	}
+
+    protected override void OnSizeAllocated(double w, double h)
+    {
+        base.OnSizeAllocated(w, h);
+		CorrigeTamanhoCenario(w,h);
+		CalculaVelocity(w);
+    }
 
 	protected override void OnAppearing()
 	{
 		base.OnAppearing();
 		Desenha();
 	}
-
-	async Task Desenha()
+	
+	void CalculaVelocity(double w)
 	{
-		while(!estaMorto)
-		{
-			GerenciaCenarios();
-			await Task.Delay(tempoEntreFrames);
-		}
-	}
-
-	protected override void OnSizeAllocated(double w, double h)
-	{
-		base.OnSizeAllocated(w, h);
-		CorrigeTamanhoCenario(w, h);
-		CalculaVelocidade(w);
-	}
-
-	void CalculaVelocidade(double w)
-	{
-		velocidade1 = (int)(w * 0.001);
-		velocidade2 = (int)(w * 0.004);
-		velocidade3 = (int)(w * 0.007);
-		velocidade4 = (int)(w * .009);
-		velocidade = (int)(w * 0.01);
+		Velocity1=(int)(w*0.001);
+		Velocity2=(int)(w*0.004);
+		Velocity3=(int)(w*0.008);
+		Velocity = (int)(w * 0.01);
 	}
 
 	void CorrigeTamanhoCenario(double w, double h)
 	{
-		foreach (var a in layerUm.Children)
-			(a as Image).WidthRequest = w;
+		foreach(var a in fundo00.png.Children)
+		(a as Image ).WidthRequest = w;
+		foreach(var a in fundo01.png.Children)
+		(a as Image ).WidthRequest = w;
+		foreach(var a in fundo02.png.Children)
+		(a as Image ).WidthRequest = w;
+		foreach(var a in fundo03.png.Children)
+		(a as Image ).WidthRequest = w;
+		foreach(var a in fundo04.png.Children)
+		(a as Image ).WidthRequest = w;
+		foreach( var a in chao.png.Children)
+		(a as Image ).WidthRequest = w;
 
-		foreach (var a in layerDois.Children)
-			(a as Image).WidthRequest = w;
-		
-		foreach (var a in layerTres.Children)
-			(a as Image).WidthRequest = w;
-		
-		foreach (var a in layerAsfalto.Children)
-			(a as Image).WidthRequest = w;
-
-		layerUm.WidthRequest = w * 1.5;
-		layerDois.WidthRequest = w * 1.5;
-		layerTres.WidthRequest = w * 1.5;
-		layerAsfalto.WidthRequest = w * 1.5;
+		fundo00.png.WidthRequest=w*1.5;
+		fundo01.png.WidthRequest=w*1.5;
+		fundo02.png.WidthRequest=w*1.5;
+		fundo03.png.WidthRequest=w*1.5;
+		fundo04.png.WidthRequest=w*1.5;
 	}
 
 	void GerenciaCenarios()
 	{
 		MoveCenario();
-		GerenciaCenario(layerUm);
-		GerenciaCenario(layerDois);
-		GerenciaCenario(layerTres);
-		GerenciaCenario(layerAsfalto);		
+		GerenciaCenario(layerFundo1);
+		GerenciaCenario(layerFundo2);
+		GerenciaCenario(layerFundo3);
+		GerenciaCenario(layerFundo4);
+		GerenciaCenario(layerChao);
 	}
 
 	void MoveCenario()
 	{
-		layerUm.TranslationX -= velocidade1;
-		layerDois.TranslationX -= velocidade2;
-		layerTres.TranslationX -= velocidade3;
-		layerAsfalto.TranslationX -= velocidade;
+		layerFundo1.TranslationX -= Velocity1;
+		layerFundo2.TranslationX -= Velocity2;
+		layerFundo3.TranslationX -= Velocity3;
+		layerChao.TranslationX -= Velocity;
 	}
-
+	
 	void GerenciaCenario(HorizontalStackLayout hsl)
 	{
 		var view = (hsl.Children.First() as Image);
-
-		if(view.WidthRequest + hsl.TranslationX < 0)
+		if(view.WidthRequest+hsl.TranslationX<0)
 		{
 			hsl.Children.Remove(view);
 			hsl.Children.Add(view);
 			hsl.TranslationX = view.TranslationX;
 		}
 	}
-}
 
+	
+}
