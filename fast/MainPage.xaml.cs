@@ -1,9 +1,10 @@
-﻿namespace fast;
+﻿using FFImageLoading.Maui;
+
+namespace fast;
 
 public partial class MainPage : ContentPage
 {
 	double HeightWindow = 0;
-	double WidthtWindow = 0;
  	int Velocity = 0;
 	 int Velocity1 = 0;
 	 int Velocity2 = 0;
@@ -22,14 +23,12 @@ public partial class MainPage : ContentPage
 	 int minOpening = 100;
 	int Score = 0;
 
-
-
 	Player player;
 
 	public MainPage()
 	{
 		InitializeComponent();
-		player = new Player(imgpersonagem);
+		player = new Player(imgveado);
 		player.Run();
 	}
 
@@ -37,7 +36,7 @@ public partial class MainPage : ContentPage
 	{
 		while (!IsDied)
 		{
-			GerenciaCenarios();
+			
 			player.Desenha();
 			await Task.Delay(TimeBeteweenFrames);
 		}
@@ -66,42 +65,40 @@ public partial class MainPage : ContentPage
 
 	void CorrigeTamanhoCenario(double w, double h)
 	{
-		foreach(var a in fundo00.png.Children)
+		foreach(var a in layerUm.Children)
 		(a as Image ).WidthRequest = w;
-		foreach(var a in fundo01.png.Children)
+		foreach(var a in layerDois.Children)
 		(a as Image ).WidthRequest = w;
-		foreach(var a in fundo02.png.Children)
+		foreach(var a in layerTres.Children)
 		(a as Image ).WidthRequest = w;
-		foreach(var a in fundo03.png.Children)
+		foreach(var a in layerQuatro.Children)
 		(a as Image ).WidthRequest = w;
-		foreach(var a in fundo04.png.Children)
-		(a as Image ).WidthRequest = w;
-		foreach( var a in chao.png.Children)
+		foreach( var a in layerAsfalto.Children)
 		(a as Image ).WidthRequest = w;
 
-		fundo00.png.WidthRequest=w*1.5;
-		fundo01.png.WidthRequest=w*1.5;
-		fundo02.png.WidthRequest=w*1.5;
-		fundo03.png.WidthRequest=w*1.5;
-		fundo04.png.WidthRequest=w*1.5;
-	}
+		layerUm.WidthRequest=w*1.5;
+		layerDois.WidthRequest=w*1.5;
+		layerTres.WidthRequest=w*1.5;
+		layerQuatro.WidthRequest=w*1.5;
+		
 
 	void GerenciaCenarios()
 	{
 		MoveCenario();
-		GerenciaCenario(layerFundo1);
-		GerenciaCenario(layerFundo2);
-		GerenciaCenario(layerFundo3);
-		GerenciaCenario(layerFundo4);
-		GerenciaCenario(layerChao);
+		GerenciaCenario(layerUm);
+		GerenciaCenario(layerDois);
+		GerenciaCenario(layerTres);
+		GerenciaCenario(layerQuatro);
+		
 	}
 
 	void MoveCenario()
 	{
-		layerFundo1.TranslationX -= Velocity1;
-		layerFundo2.TranslationX -= Velocity2;
-		layerFundo3.TranslationX -= Velocity3;
-		layerChao.TranslationX -= Velocity;
+		layerUm.TranslationX -= Velocity1;
+		layerDois.TranslationX -= Velocity2;
+		layerTres.TranslationX -= Velocity3;
+		layerQuatro.TranslationX -= Velocity4;
+		layerAsfalto.TranslationX -= Velocity;
 	}
 	
 	void GerenciaCenario(HorizontalStackLayout hsl)
@@ -114,6 +111,5 @@ public partial class MainPage : ContentPage
 			hsl.TranslationX = view.TranslationX;
 		}
 	}
-
-	
+   }
 }

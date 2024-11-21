@@ -53,7 +53,8 @@
 
         </HorizontalStackLayout>
 
-        <Image Source="skyline.png"
+        <Image Source="veadoframe00"
+               x:Name="imgveado"
                WidthRequest="200"/>
     </Grid>
 </ContentPage>
