@@ -4,9 +4,8 @@ namespace fast;
 
 public  class Animacao
 {
-    protected List<String> Animacao1 = new List<String>();
-    protected List<String> Animacao2 = new List<String>();
-    protected List<String> Animacao3 = new List<String>();
+    protected List<string> Animacao1 = new List<string>();
+    protected List<string> Animacao2 = new List<string>();
     protected bool Loop = true;
     protected int AnimacaoAtiva = 1;
     bool Parado = true;
@@ -52,12 +51,7 @@ public  class Animacao
             NomeArquivo = Animacao2[FrameAtual];
             TamanhoAnimacao = Animacao2.Count;
         }
-        else if (AnimacaoAtiva == 3)
-        {
-            NomeArquivo = Animacao3[FrameAtual];
-            TamanhoAnimacao = Animacao3.Count;
-        }
-
+        
         ImageView.Source = ImageSource.FromFile(NomeArquivo);
         FrameAtual++;
 
@@ -77,6 +71,5 @@ public  class Animacao
 
     public virtual void QuandoParar()
     {
-     
     }
 }

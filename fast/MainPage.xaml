@@ -1,66 +1,96 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="fast.MainPage"
-             xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
-             Shell.NavBarIsVisible="False">
+<ContentPage
+    x:Class="fast.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ff="clr-namespace:FFImageLoading.Maui;assembly=FFImageLoading.Maui"
+    Shell.NavBarIsVisible="False">
 
     <Grid>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnGridClicked" />
+        </Grid.GestureRecognizers>
 
         <HorizontalStackLayout x:Name="layerUm">
 
-            <Image Source="fundo00.png"
-                   Aspect="Fill"/>
-            <Image Source="fundo00.png"
-                   Aspect="Fill"/>
-            <Image Source="fundo00.png"
-                   Aspect=" Fill"/>
+            <Image Aspect="Fill" Source="fundo01.png" />
+            <Image Aspect="Fill" Source="fundo01.png" />
+            <Image Aspect="Fill" Source="fundo01.png" />
 
         </HorizontalStackLayout>
 
         <HorizontalStackLayout x:Name="layerDois">
-            <Image Source="fundo01.png"/>
-            <Image Source="fundo01.png"/>
-            <Image Source="fundo01.png"/>
+            <Image Aspect="Fill" Source="fundo02.png" />
+            <Image Aspect="Fill" Source="fundo02.png" />
+            <Image Aspect="Fill" Source="fundo02.png" />
 
         </HorizontalStackLayout>
 
         <HorizontalStackLayout x:Name="layerTres">
 
-            <Image Source="fundo02.png"/>
-            <Image Source="fundo02.png"/>
-            <Image Source="fundo02.png"/>
+            <Image Aspect="Fill" Source="fundo03.png" />
+            <Image Aspect="Fill" Source="fundo03.png" />
+            <Image Aspect="Fill" Source="fundo03.png" />
 
         </HorizontalStackLayout>
 
         <HorizontalStackLayout x:Name="layerQuatro">
 
-            <Image Source="fundo03.png"/>
-            <Image Source="fundo03.png"/>
-            <Image Source="fundo03.png"/>
+            <Image Aspect="Fill" Source="fundo04.png" />
+            <Image Aspect="Fill" Source="fundo04.png" />
+            <Image Aspect="Fill" Source="fundo04.png" />
 
         </HorizontalStackLayout>
 
-        <HorizontalStackLayout x:Name="layerAsfalto">
+        <HorizontalStackLayout x:Name="layerCinco">
 
-            <Image Source="asfalto.jpeg"
-                   WidthRequest="400"
-                   VerticalOptions="End"/>
-            <Image Source="asfalto.jpeg"
-                   WidthRequest="400"
-                   VerticalOptions="End"/>
-            <Image Source="asfalto.jpeg"
-                   WidthRequest="400"
-                   VerticalOptions="End"/>
+            <Image
+                Aspect="Fill"
+                Source="fundo05.png"
+                VerticalOptions="End" />
+            <Image
+                Aspect="Fill"
+                Source="fundo05.png"
+                VerticalOptions="End" />
+            <Image
+                Aspect="Fill"
+                Source="fundo05.png"
+                VerticalOptions="End" />
+
+        </HorizontalStackLayout>
+
+        <HorizontalStackLayout x:Name="layerChao">
+
+            <Image
+                Aspect="AspectFit"
+                BackgroundColor="red"
+                Source="chao.png"
+                VerticalOptions="End"
+                HeightRequest="50"
+                WidthRequest="100" />
+            <Image
+                Aspect="AspectFit"
+                BackgroundColor="green"
+                Source="chao.png"
+                VerticalOptions="End"
+                HeightRequest="50"
+                WidthRequest="100" />
+            <Image
+                Aspect="AspectFit"
+                BackgroundColor="yellow"
+                Source="chao.png"
+                VerticalOptions="End"
+                HeightRequest="50"
+                WidthRequest="100" />
 
         </HorizontalStackLayout>
 
         <ff:CachedImageView
-               CacheType="Disk"
-               CacheDuration="365"
-               Source="veadoframe00"
-               x:Name="imgveado"
-               WidthRequest="200" 
-               HeightRequest="50"/>
+            x:Name="imgveado"
+            BackgroundColor="Blue"
+            CacheDuration="365"
+            CacheType="All"
+            HeightRequest="200"
+            WidthRequest="200" />
     </Grid>
 </ContentPage>
